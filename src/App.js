@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+//import { Switch, Route } from 'react-router-dom';
 import { recipes } from './tempList';
 import RecipeList from './components/RecipeList';
 import RecipeDetail from './components/RecipeDetail';
@@ -15,7 +16,7 @@ class App extends Component {
     query:'&q=',
     base_url:"https://www.food2fork.com/api/search?key=30e1677d9921524b31e77d8ea278244e"
   }
-  //with async u don't need a call back
+  //with async u don't need a call back IF UR USING AWAIT  u need to use assync
   
   async getRecipes() {
     try {
@@ -24,8 +25,8 @@ class App extends Component {
       console.log(jsonData);
       if(jsonData.recipes.length===0){
         this.setState(()=>{
-          return{error:`so sorry sweet heart your search result did not return any
-          result please refresh and try searching for an actual recipe seperated with
+          return{error:`So sorry sweet heart your search result did not return any
+          result please click on the go bact to recipe button and try searching for an actual recipe seperated with
           commas thanks!`}
           
         })
@@ -97,7 +98,10 @@ class App extends Component {
     return (
       <React.Fragment>
        {this.displayPage(this.state.pageIndex)}
-      
+       {/*
+      <Switch>
+      <Route exact path="/" component={RecipeList} />
+       </Switch>*/}
       </React.Fragment>
     );
   }
